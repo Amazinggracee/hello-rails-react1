@@ -1,18 +1,21 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getGreeting } from "../features/greeting/greetingSlice";
 
 const Greeting = () => {
-  const { greeting } = useSelector((store) => store.greeting);
+  const { greeting, isLoading, error } = useSelector((state) => state.greeting);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getGreeting());
-  }, []);
+  }, [dispatch]);
 
-  if (greeting.isLoading) {
+  if (isLoading) {
     return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
   }
 
   return (
