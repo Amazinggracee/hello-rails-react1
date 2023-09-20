@@ -71,5 +71,5 @@ group :test do
 end
 
 gem 'psych', '~> 3.0'
-gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'rack-cors'
+gem 'rubocop', '>= 1.0', '< 2.0'
